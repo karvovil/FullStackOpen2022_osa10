@@ -12,6 +12,16 @@
     },
     "rules": {
       "react/prop-types": "off",
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "eqeqeq": "error",
+      "no-trailing-spaces": "error",
+      "linebreak-style": [
+        "error",
+        "windows"
+      ],
+      "indent": [
+        "error",
+        2  
+      ]
     }
   }
