@@ -15,15 +15,16 @@ const styles = StyleSheet.create({
     // ...
   },
   text: {
-    color: 'white'
+    color: 'white',
+    margin: 10,
   }
   // ...
 });
 
 const AppBar = () => {
   return (
-    <View >
-      <ScrollView horizontal style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView horizontal >
         <Link to="/">
           <Text fontSize='subheading' fontWeight='bold' style={styles.text}>
           Repositories
