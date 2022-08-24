@@ -1,8 +1,8 @@
-import { StyleSheet, View } from 'react-native'
-import RepositoryList from './RepositoryList'
-import AppBar from './AppBar'
+import { StyleSheet, View } from 'react-native';
 import { Route, Routes, Navigate } from 'react-router-native';
-import SignIn from './SignIn'
+import RepositoryList from './RepositoryList';
+import AppBar from './AppBar';
+import SignIn from './SignIn';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  console.log('starting...')
+  console.log('starting...');
   return (
     <View style={styles.container}>
       <AppBar/>

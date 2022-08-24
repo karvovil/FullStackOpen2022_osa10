@@ -1,6 +1,6 @@
-import { View, StyleSheet, ScrollView } from 'react-native'
-import Constants from 'expo-constants'
-import Text from './Text'
+import { View, StyleSheet, ScrollView } from 'react-native';
+import Constants from 'expo-constants';
+import Text from './Text';
 import { Link } from "react-router-native";
 
 
@@ -37,7 +37,7 @@ const AppBar = () => {
         </Link>
       </ScrollView>
     </View>
-  )
-}
+  );
+};
 
 export default AppBar;

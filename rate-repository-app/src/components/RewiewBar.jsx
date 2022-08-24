@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import Text from './Text';
+
 const styles = StyleSheet.create({
   flexContainer: {
     display: 'flex',
@@ -14,9 +15,8 @@ const styles = StyleSheet.create({
   flexItem: {
     flexGrow: 1,
   },
-
 });
-const round = (num) => `${Math.round(num/100)/10}k`
+const round = (num) => `${Math.round(num/100)/10}k`;
 
 const ReviewBar = ({item}) => {
   return(
@@ -52,6 +52,6 @@ const ReviewBar = ({item}) => {
         <Text color='textSecondary'>rating</Text>
       </View>
     </View>
-  )
-}
-export default ReviewBar
+  );
+};
+export default ReviewBar;

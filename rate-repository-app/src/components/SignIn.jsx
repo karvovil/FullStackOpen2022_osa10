@@ -1,11 +1,10 @@
 import Text from './Text';
-import { View } from 'react-native';
+import { View, Pressable, StyleSheet } from 'react-native';
 import FormikTextInput from './FormikTextInput';
-import { Pressable } from 'react-native';
 import { Formik } from 'formik';
 import theme from '../theme';
-import { StyleSheet } from 'react-native';
 import * as yup from 'yup';
+
 const styles = StyleSheet.create({
   container: {
     flex: 0,
@@ -67,6 +66,6 @@ const SignIn = () => {
       {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
   );
-}
+};
 
 export default SignIn;

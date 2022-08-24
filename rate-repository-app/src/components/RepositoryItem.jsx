@@ -46,4 +46,4 @@ const RepositoryItem = ({item}) => {
     </View>
   );
 };
-export default RepositoryItem
+export default RepositoryItem;

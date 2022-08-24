@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { useField } from 'formik';
-
 import TextInput from './TextInput';
 import Text from './Text';
 
