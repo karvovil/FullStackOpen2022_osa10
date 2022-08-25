@@ -1,17 +1,20 @@
-import Text from "./Text"
-import { StyleSheet, View } from "react-native"
+import Text from "./Text";
+import { StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
   flexContainer: {
     display: 'flex',
     flexDirection: 'column',
+    flexShrink: 1,
+
   },
   textStyle: {
     paddingBottom: 5,
     paddingLeft: 10,
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+
   },
-})
+});
 const RepositoryDescription = ({item}) => {
 
   return(
@@ -26,6 +29,6 @@ const RepositoryDescription = ({item}) => {
         {item.language}
       </Text>
     </View>
-  )
-}
-export default RepositoryDescription
+  );
+};
+export default RepositoryDescription;
