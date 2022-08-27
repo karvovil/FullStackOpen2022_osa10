@@ -33,7 +33,6 @@ const SignInLink = () => {
   );
 };
 
-
 const AppBar = () => {
   const {data} = useQuery(GET_CURRENT_USER);
 
@@ -55,5 +54,4 @@ const AppBar = () => {
     </View>
   );
 };
-
 export default AppBar;

@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
 });
 const RepositoryItem = ({item}) => {
 
-
   return (
     <View style={ styles.itemContainer }>
 
