@@ -1,8 +1,10 @@
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
+import SignOut from './SignOut';
 import { Link } from "react-router-native";
-
+import { useQuery } from '@apollo/client';
+import { GET_CURRENT_USER } from '../graphql/queries';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +23,25 @@ const styles = StyleSheet.create({
   // ...
 });
 
+const SignInLink = () => {
+  return(
+    <Link to="/signIn">
+      <Text fontSize='subheading' fontWeight='bold' style={styles.text}>
+        Sign In
+      </Text>
+    </Link>
+  );
+};
+
+
 const AppBar = () => {
+  const {data} = useQuery(GET_CURRENT_USER);
+
+  const signInOrOut =
+  data === undefined ? null
+    : data.me ? <SignOut/>
+      : <SignInLink/>;
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal >
@@ -30,11 +50,7 @@ const AppBar = () => {
           Repositories
           </Text>
         </Link>
-        <Link to="/signIn">
-          <Text fontSize='subheading' fontWeight='bold' style={styles.text}>
-          Sign In
-          </Text>
-        </Link>
+        {signInOrOut}
       </ScrollView>
     </View>
   );
