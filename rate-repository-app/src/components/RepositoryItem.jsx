@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 const RepositoryItem = ({item}) => {
 
   return (
-    <View style={ styles.itemContainer }>
+    <View testID="repositoryItem" style={ styles.itemContainer }>
 
       <View style = {styles.flexContainer}>
 
