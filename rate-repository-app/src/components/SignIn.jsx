@@ -1,11 +1,10 @@
-import Text from './Text';
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import FormikTextInput from './FormikTextInput';
 import { Formik } from 'formik';
-import theme from '../theme';
 import * as yup from 'yup';
 import useSignIn from '../hooks/useSignIn';
 import { useNavigate } from "react-router-dom";
+import BigBlueButton from './BigBlueButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,20 +12,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     backgroundColor: "#fff",
     flexShrink: 0,
-  },
-  button: {
-    padding: 15,
-    margin: 10,
-    backgroundColor: theme.colors.primary,
-    borderWidth: 1,
-    borderColor: theme.colors.textSecondary,
-    borderRadius: 5,
-    justifyContent: 'center',
-
-  },
-  buttonText: {
-    color: "#fff",
-    textAlign: 'center',
   },
 });
 
@@ -49,11 +34,7 @@ const SignInForm = ({ onSubmit }) => {
     <View style={styles.container}>
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" secureTextEntry={true}/>
-      <Pressable onPress={ onSubmit } style={styles.button}>
-        <Text style={styles.buttonText} fontSize = 'subheading' fontWeight="bold">
-          Sign In
-        </Text>
-      </Pressable>
+      <BigBlueButton buttonText='Sign In' onSubmit={onSubmit}/>
     </View>
   );
 };
@@ -84,7 +65,6 @@ const SignIn = () => {
 
   return <SignInContainer
     signIn={signIn}
-    navigate={navigate}
     onSubmit={onSubmit}
   />;
 };

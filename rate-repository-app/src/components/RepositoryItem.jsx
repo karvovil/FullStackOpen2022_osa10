@@ -1,6 +1,8 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import BigBlueButton from './BigBlueButton';
 import RepositoryDescription from './RepositoryDescription';
 import ReviewBar from './RewiewBar';
+import { useNavigate } from "react-router-dom";
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -22,27 +24,27 @@ const styles = StyleSheet.create({
     height: 60,
   },
 });
-const RepositoryItem = ({item}) => {
-
+const RepositoryItem = ({item, openUrl}) => {
+  const navigate = useNavigate();
+  const goToRepository = () => {
+    navigate(`${item.id}`, { replace: true });
+  };
   return (
-    <View testID="repositoryItem" style={ styles.itemContainer }>
-
-      <View style = {styles.flexContainer}>
-
-        <Image
-          style = {styles.avatar}
-          source={{
-            uri: item.ownerAvatarUrl,
-          }}
-        />
-
-        <RepositoryDescription item={item}/>
-
+    <Pressable onPress={ goToRepository } >
+      <View testID="repositoryItem" style={ styles.itemContainer }>
+        <View style = {styles.flexContainer}>
+          <Image
+            style = {styles.avatar}
+            source={{
+              uri: item.ownerAvatarUrl,
+            }}
+          />
+          <RepositoryDescription item={item}/>
+        </View>
+        <ReviewBar item = {item}/>
+        {openUrl && <BigBlueButton buttonText='Open in GitHub' onSubmit={openUrl}/> }
       </View>
-
-      <ReviewBar item = {item}/>
-
-    </View>
+    </Pressable>
   );
 };
 export default RepositoryItem;
