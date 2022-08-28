@@ -46,14 +46,13 @@ describe('RepositoryList', () => {
           },
         ],
       };
-      const { debug, getAllByTestId } = render(
+      const { getAllByTestId } = render(
         <RepositoryListContainer repositories={repositories} />
       );
 
       const repositoryItems = getAllByTestId('repositoryItem');
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
-      debug();
       expect(firstRepositoryItem).toHaveTextContent('jaredpalmer/formik');
       expect(firstRepositoryItem).toHaveTextContent('Build forms in React, without the tears');
       expect(firstRepositoryItem).toHaveTextContent('TypeScript');

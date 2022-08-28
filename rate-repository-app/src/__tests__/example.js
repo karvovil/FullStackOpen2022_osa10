@@ -1,9 +1,3 @@
-describe('Example', () => {
-  it('works', () => {
-    expect(1).toBe(1);
-  });
-});
-
 import { Text, View } from 'react-native';
 import { render } from '@testing-library/react-native';
 
