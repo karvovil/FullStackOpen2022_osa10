@@ -8,9 +8,8 @@ const styles = StyleSheet.create({
 });
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryList = () => {
+const RepositoryListContainer = ({ repositories, loading }) => {
 
-  const { repositories, loading } = useRepositories();
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
@@ -23,6 +22,11 @@ const RepositoryList = () => {
       renderItem = {RepositoryItem}
     />
   );
+};
+const RepositoryList = () => {
+  const { repositories, loading } = useRepositories();
+
+  return <RepositoryListContainer repositories={repositories} loading={loading}/>;
 };
 
 export default RepositoryList;
