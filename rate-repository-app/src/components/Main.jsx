@@ -4,6 +4,7 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
 import SingleRepository from './SingleRepository';
+import Review from './Review';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -19,6 +20,7 @@ const Main = () => {
       <AppBar/>
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
+        <Route path="/review" element={<Review />} exact />
         <Route path="/signIn" element={<SignIn />} exact />
         <Route path="/:id" element={<SingleRepository/>} exact/>
         <Route path="*" element={<Navigate to="/" replace />} />
