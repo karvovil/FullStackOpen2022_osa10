@@ -5,12 +5,12 @@ import Text from './Text';
 
 const styles = StyleSheet.create({
   errorText: {
-    marginTop: 5,
     color: 'red',
     marginLeft: 10,
   },
   input: {
     borderColor: '#d73a4a',
+    marginBottom: 0,
   }
 });
 
