@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, View, Text } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
+import SortMenu from './SortMenu';
 
 const styles = StyleSheet.create({
   separator: {
@@ -18,6 +19,7 @@ export const RepositoryListContainer = ({ repositories, loading }) => {
   if (loading) return <Text>Loading ...</Text>;
   return (
     <FlatList
+      ListHeaderComponent={<SortMenu/>}
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({item})=><RepositoryItem item={item}/> }
