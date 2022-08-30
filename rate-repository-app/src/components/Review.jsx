@@ -2,9 +2,11 @@ import { View, StyleSheet } from 'react-native';
 import FormikTextInput from './FormikTextInput';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import useSignIn from '../hooks/useSignIn';
 import { useNavigate } from "react-router-dom";
 import BigBlueButton from './BigBlueButton';
+import { CREATE_REVIEW } from '../graphql/mutations';
+import { useMutation } from '@apollo/client/react';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -53,20 +55,24 @@ const ReviewForm = ({ onSubmit }) => {
 };
 
 const Review = () => {
-
-  /*   const [signIn] = useSignIn();
-  let navigate = useNavigate(); */
+  const [mutate, result] = useMutation(CREATE_REVIEW);
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    /*
-    const { username, password } = values;
     try {
-      await signIn({ username, password });
-      navigate("/", { replace: true });
+      const response = await mutate({ variables: {
+        "review": {
+          repositoryName: values.repositoryName,
+          ownerName: values.owner,
+          rating: Number(values.rating),
+          text: values.reviewText
+        }
+      }});
+      console.log('path ',response.data.createReview.repositoryId);
+      navigate(`../${response.data.createReview.repositoryId}`, { replace: true });
     } catch (e) {
       console.log(e);
-    } */
-    console.log(values);
+    }
   };
 
   return (
