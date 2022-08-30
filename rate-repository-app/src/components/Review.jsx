@@ -7,7 +7,6 @@ import BigBlueButton from './BigBlueButton';
 import { CREATE_REVIEW } from '../graphql/mutations';
 import { useMutation } from '@apollo/client/react';
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 0,
@@ -55,7 +54,7 @@ const ReviewForm = ({ onSubmit }) => {
 };
 
 const Review = () => {
-  const [mutate, result] = useMutation(CREATE_REVIEW);
+  const [mutate] = useMutation(CREATE_REVIEW);
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
@@ -68,7 +67,6 @@ const Review = () => {
           text: values.reviewText
         }
       }});
-      console.log('path ',response.data.createReview.repositoryId);
       navigate(`../${response.data.createReview.repositoryId}`, { replace: true });
     } catch (e) {
       console.log(e);

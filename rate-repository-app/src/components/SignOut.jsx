@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     color: 'white',
     margin: 10,
   }
-  // ...
 });
 
 const SignOut = () => {

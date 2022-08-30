@@ -26,7 +26,6 @@ const RepositoryInfo = ({ repository }) => {
 const SingleRepository = () => {
 
   const { id } = useParams();
-  console.log('id ',id);
   const {data, loading} = useQuery(GET_REPOSITORY, {
     fetchPolicy: 'cache-and-network',
     variables:{repositoryId: id}});

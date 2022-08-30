@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import theme from "../theme";
 import Text from "./Text";
 import { format } from 'date-fns';
+
 const styles = StyleSheet.create({
   verticalFlexContainer: {
     display: 'flex',

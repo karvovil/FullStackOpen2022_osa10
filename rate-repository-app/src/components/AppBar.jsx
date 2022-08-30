@@ -14,13 +14,11 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     paddingBottom: Constants.statusBarHeight/2,
     backgroundColor: '#24292e',
-    // ...
   },
   text: {
     color: 'white',
     margin: 10,
   }
-  // ...
 });
 
 const SignInLink = () => {

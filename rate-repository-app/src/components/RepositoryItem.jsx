@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     padding: 5,
-
   },
   flexItem: {
     flexGrow: 1,
@@ -25,10 +24,10 @@ const styles = StyleSheet.create({
   },
 });
 const RepositoryItem = ({item, openUrl}) => {
+
   const navigate = useNavigate();
-  const goToRepository = () => {
-    navigate(`${item.id}`, { replace: true });
-  };
+  const goToRepository = () => {navigate(`${item.id}`, { replace: true });};
+
   return (
     <Pressable onPress={ goToRepository } >
       <View testID="repositoryItem" style={ styles.itemContainer }>
