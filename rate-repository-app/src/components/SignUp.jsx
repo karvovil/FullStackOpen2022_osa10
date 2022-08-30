@@ -4,8 +4,9 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import BigBlueButton from './BigBlueButton';
-import { CREATE_REVIEW } from '../graphql/mutations';
+import { CREATE_USER } from '../graphql/mutations';
 import { useMutation } from '@apollo/client/react';
+import useSignIn from '../hooks/useSignIn';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,11 +60,26 @@ const ReviewForm = ({ onSubmit }) => {
 };
 
 const SignUp = () => {
-  //const [mutate] = useMutation(CREATE_REVIEW);
-  //const navigate = useNavigate();
+  const [mutate] = useMutation(CREATE_USER);
+  const navigate = useNavigate();
+  const [signIn] = useSignIn();
 
   const onSubmit = async (values) => {
-    console.log(values);
+    try {
+      const response = await mutate({ variables: {
+        "user": {
+          username: values.username,
+          password: values.password,
+        }
+      }});
+      await signIn({
+        username: response.data.createUser.username,
+        password: values.password
+      });
+      navigate(`/`, { replace: true });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
