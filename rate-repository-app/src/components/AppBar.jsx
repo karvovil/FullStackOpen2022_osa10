@@ -30,6 +30,15 @@ const SignInLink = () => {
     </Link>
   );
 };
+const SignUpLink = () => {
+  return(
+    <Link to="/signUp">
+      <Text fontSize='subheading' fontWeight='bold' style={styles.text}>
+        Sign Up
+      </Text>
+    </Link>
+  );
+};
 const ReviewLink = () => {
   return(
     <Link to="/review">
@@ -41,16 +50,11 @@ const ReviewLink = () => {
 };
 const AppBar = () => {
   const {data} = useQuery(GET_CURRENT_USER);
+  const signedIn = data !== undefined && data.me;
 
-  const showReviewLinkIfSignedIn =
-  data === undefined ? null
-    : data.me ? <ReviewLink/>
-      : null;
-
-  const signInOrOut =
-  data === undefined ? null
-    : data.me ? <SignOut/>
-      : <SignInLink/>;
+  const showReviewLinkIfSignedIn = signedIn ? <ReviewLink/> : null;
+  const signInOrOut = signedIn ? <SignOut/> : <SignInLink/>;
+  const showSignUpLinkIfNotSignedIn = !signedIn ? <SignUpLink/> : null;
 
   return (
     <View style={styles.container}>
@@ -62,6 +66,7 @@ const AppBar = () => {
         </Link>
         {showReviewLinkIfSignedIn}
         {signInOrOut}
+        {showSignUpLinkIfNotSignedIn}
       </ScrollView>
     </View>
   );
