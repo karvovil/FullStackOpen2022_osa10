@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.textSecondary,
     color: theme.colors.textSecondary,
     borderRadius: 5,
+    backgroundColor: 'white',
   },
 });
 
