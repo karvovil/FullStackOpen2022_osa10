@@ -12,7 +12,10 @@ const styles = StyleSheet.create({
 });
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories, sort, handleSortChange, handleFilterChange }) => {
+export const RepositoryListContainer = ({
+  repositories, sort, handleSortChange, handleFilterChange, onEndReach
+}) => {
+
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
@@ -29,6 +32,8 @@ export const RepositoryListContainer = ({ repositories, sort, handleSortChange, 
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({item})=><RepositoryItem item={item}/> }
       keyExtractor={item=>item.id}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.1}
     />
   );
 };
@@ -44,10 +49,15 @@ const RepositoryList = () => {
     orderBy,
     orderDirection,
     searchKeyword: debouncedFilter,
+    first: 8,
   };
 
-  const { repositories } = useRepositories(queryVariables);
+  const { repositories, fetchMore } = useRepositories(queryVariables);
 
+  const onEndReach = () => {
+    console.log('You have reached the end of the list');
+    fetchMore();
+  };
   const handleSortChange = (itemValue) => { setSort(itemValue); };
   const handleFilterChange = (filterValue) => { setFilter(filterValue); };
 
@@ -56,6 +66,7 @@ const RepositoryList = () => {
     sort={sort}
     handleSortChange={handleSortChange}
     handleFilterChange={handleFilterChange}
+    onEndReach={onEndReach}
   />;
 };
 export default RepositoryList;

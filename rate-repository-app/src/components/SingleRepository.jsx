@@ -26,9 +26,30 @@ const RepositoryInfo = ({ repository }) => {
 const SingleRepository = () => {
 
   const { id } = useParams();
-  const {data, loading} = useQuery(GET_REPOSITORY, {
+  const variables = {
+    repositoryId: id,
+    first: 6,
+  };
+  const {data, loading, fetchMore} = useQuery(GET_REPOSITORY, {
     fetchPolicy: 'cache-and-network',
-    variables:{repositoryId: id}});
+    variables,
+  });
+
+  const onEndReach = () => {
+    console.log('You have reached the end of REVIEWS');
+    const canFetchMore = !loading && data?.repository.reviews.pageInfo.hasNextPage;
+
+    if (!canFetchMore) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        after: data.repository.reviews.pageInfo.endCursor,
+        ...variables,
+      },
+    });
+  };
 
   if (loading) return <Text>Loading ...</Text>;
 
@@ -37,13 +58,14 @@ const SingleRepository = () => {
     : [];
   return (
     <FlatList
+      ListHeaderComponent={() => <RepositoryInfo repository={data.repository} />}
       data={reviewNodes}
+      ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <ReviewItem review={item} />}
       keyExtractor={({ id }) => id}
-      ListHeaderComponent={() => <RepositoryInfo repository={data.repository} />}
-      ItemSeparatorComponent={ItemSeparator}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.1}
     />
   );
 };
-
 export default SingleRepository;

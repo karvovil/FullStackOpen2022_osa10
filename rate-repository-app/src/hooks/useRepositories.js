@@ -5,7 +5,7 @@ import { useState } from 'react';
 const useRepositories = (variables) => {
   const [repositories, setRepositories] = useState();
 
-  const {loading, refetch} = useQuery(
+  const { data, loading, fetchMore, refetch} = useQuery(
     GET_REPOSITORIES,
     {
       variables: variables,
@@ -13,7 +13,27 @@ const useRepositories = (variables) => {
       onCompleted: data => setRepositories(data.repositories)
     }
   );
-  return { repositories, loading, refetch};
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+
+    if (!canFetchMore) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        after: data.repositories.pageInfo.endCursor,
+        ...variables,
+      },
+    });
+  };
+
+  return {
+    repositories: data?.repositories,
+    fetchMore: handleFetchMore,
+    loading,
+    refetch,
+  };
 };
 
 export default useRepositories;
