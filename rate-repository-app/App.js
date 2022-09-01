@@ -5,13 +5,11 @@ import { ApolloProvider } from '@apollo/client';
 import createApolloClient from './src/utils/apolloClient';
 import AuthStorage from './src/utils/authStorage';
 import AuthStorageContext from './src/contexts/AuthStorageContext';
-//import Constants from 'expo-constants';
 
 const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
 
 const App = () => {
-  //console.log(Constants.manifest);
   return (
     <>
       <NativeRouter>

@@ -18,5 +18,4 @@ const TextInput = ({ style, ...props }) => {
 
   return <NativeTextInput style={textInputStyle} {...props} />;
 };
-
 export default TextInput;

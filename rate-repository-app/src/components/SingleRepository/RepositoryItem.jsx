@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet, View } from 'react-native';
-import BigBlueButton from './BigBlueButton';
-import RepositoryDescription from './RepositoryDescription';
-import ReviewBar from './RewiewBar';
+import BigBlueButton from '../BigBlueButton';
+import RepositoryDescription from '../RepositoryList/RepositoryDescription';
+import ReviewBar from '../RepositoryList/RewiewBar';
 import { useNavigate } from "react-router-dom";
 
 const styles = StyleSheet.create({

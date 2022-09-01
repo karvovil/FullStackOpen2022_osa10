@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, View} from 'react-native';
-import RepositoryItem from './RepositoryItem';
-import useRepositories from '../hooks/useRepositories';
+import RepositoryItem from '../SingleRepository/RepositoryItem';
+import useRepositories from '../../hooks/useRepositories';
 import SortMenu from './SortMenu';
 import { useState } from "react";
 import FilterInput from './FilterInput';
@@ -55,7 +55,6 @@ const RepositoryList = () => {
   const { repositories, fetchMore } = useRepositories(queryVariables);
 
   const onEndReach = () => {
-    console.log('You have reached the end of the list');
     fetchMore();
   };
   const handleSortChange = (itemValue) => { setSort(itemValue); };

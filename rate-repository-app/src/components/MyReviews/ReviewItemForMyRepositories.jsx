@@ -1,31 +1,26 @@
 import { StyleSheet, View, Pressable, Alert } from "react-native";
-import Text from './Text';
-import { BaseReviewItem } from "./ReviewItem";
-import theme from '../theme';
+import Text from '../Text';
+import BaseReviewItem from "../BaseReviewItem";
+import theme from '../../theme';
 import { useNavigate } from "react-router-dom";
 import { useMutation } from '@apollo/client/react';
-import { DELETE_REVIEW } from "../graphql/queries";
+import { DELETE_REVIEW } from "../../graphql/queries";
 
 const styles = StyleSheet.create({
-  redButton: {
+  button: {
     padding: 15,
     margin: 10,
-    backgroundColor: 'crimson',
     borderWidth: 1,
     borderColor: theme.colors.textSecondary,
     borderRadius: 5,
     justifyContent: 'center',
     flexGrow: 1,
   },
+  redButton: {
+    backgroundColor: 'crimson',
+  },
   blueButton: {
-    padding: 15,
-    margin: 10,
     backgroundColor: theme.colors.primary,
-    borderWidth: 1,
-    borderColor: theme.colors.textSecondary,
-    borderRadius: 5,
-    justifyContent: 'center',
-    flexGrow: 1,
   },
   buttonText: {
     color: "#fff",
@@ -57,7 +52,6 @@ const ReviewItemForMyRepositories = ({ review, refetch }) => {
       [
         {
           text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
           style: "cancel"
         },
         {
@@ -72,12 +66,12 @@ const ReviewItemForMyRepositories = ({ review, refetch }) => {
     <>
       <BaseReviewItem review={review} headingText={review.repository.fullName} />
       <View style={styles.container}>
-        <Pressable onPress={goToRepository} style={styles.blueButton}>
+        <Pressable onPress={goToRepository} style={[styles.button, styles.blueButton]}>
           <Text style={styles.buttonText} fontSize = 'subheading' fontWeight="bold">
             View Repository
           </Text>
         </Pressable>
-        <Pressable onPress={() => deleteReview()} style={styles.redButton}>
+        <Pressable onPress={() => deleteReview()} style={[styles.button, styles.redButton]}>
           <Text style={styles.buttonText} fontSize = 'subheading' fontWeight="bold">
             Delete Review
           </Text>

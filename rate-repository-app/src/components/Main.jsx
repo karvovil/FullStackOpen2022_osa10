@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  console.log('start');
+  console.log('started repo app');
   return (
     <View style={styles.container}>
       <AppBar/>
@@ -32,5 +32,4 @@ const Main = () => {
     </View>
   );
 };
-
 export default Main;

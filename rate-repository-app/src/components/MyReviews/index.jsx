@@ -1,8 +1,7 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import { useQuery } from "@apollo/client";
-import { GET_CURRENT_USER } from "../graphql/queries";
-import theme from "../theme";
-import Text from "./Text";
+import { GET_CURRENT_USER } from "../../graphql/queries";
+import Text from "../Text";
 import ReviewItemForMyRepositories from "./ReviewItemForMyRepositories";
 const styles = StyleSheet.create({
   separator: {

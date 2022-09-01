@@ -1,6 +1,6 @@
 import RepositoryItem from "./RepositoryItem";
 import {useParams} from 'react-router-dom';
-import { GET_REPOSITORY } from "../graphql/queries";
+import { GET_REPOSITORY } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
 import * as Linking from 'expo-linking';
 import { FlatList, Text, View, StyleSheet } from "react-native";
@@ -36,7 +36,6 @@ const SingleRepository = () => {
   });
 
   const onEndReach = () => {
-    console.log('You have reached the end of REVIEWS');
     const canFetchMore = !loading && data?.repository.reviews.pageInfo.hasNextPage;
 
     if (!canFetchMore) {

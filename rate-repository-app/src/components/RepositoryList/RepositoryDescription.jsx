@@ -1,4 +1,4 @@
-import Text from "./Text";
+import Text from "../Text";
 import { StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
@@ -6,13 +6,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     flexShrink: 1,
-
   },
   textStyle: {
     paddingBottom: 5,
     paddingLeft: 10,
     flexWrap: "wrap",
-
   },
 });
 const RepositoryDescription = ({item}) => {
