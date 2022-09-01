@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 import theme from "../theme";
 import Text from "./Text";
 import { format } from 'date-fns';
@@ -34,7 +34,7 @@ const humanReadableDate = (dateString) => {
   return format(date, 'dd.MM.yyyy');
 };
 
-const ReviewItem = ({ review }) => {
+export const BaseReviewItem = ({ review, headingText }) => {
   return(
     <View style = {styles.horizontalFlexContainer}>
       <Text style={styles.ratingText} fontWeight="bold" color='primary'>
@@ -42,7 +42,7 @@ const ReviewItem = ({ review }) => {
       </Text>
       <View style = {styles.verticalFlexContainer}>
         <Text fontSize = 'subheading' fontWeight="bold">
-          {review.repository.fullName ? review.repository.fullName : review.user.username}
+          {headingText}
         </Text>
         <Text style={{ paddingBottom: 7 }} color='textSecondary'>
           {humanReadableDate(review.createdAt)}
@@ -52,6 +52,12 @@ const ReviewItem = ({ review }) => {
         </Text>
       </View>
     </View>
+  );
+};
+
+const ReviewItem = ({ review }) => {
+  return(
+    <BaseReviewItem review = {review} headingText={review.user.username}/>
   );
 };
 export default ReviewItem;

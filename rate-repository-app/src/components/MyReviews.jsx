@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_CURRENT_USER } from "../graphql/queries";
 import theme from "../theme";
 import Text from "./Text";
-import ReviewItem from "./ReviewItem";
+import ReviewItemForMyRepositories from "./ReviewItemForMyRepositories";
 const styles = StyleSheet.create({
   separator: {
     height: 10,
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 const MyReviews = () => {
 
-  const {data, loading } = useQuery(GET_CURRENT_USER, {
+  const {data, loading, refetch } = useQuery(GET_CURRENT_USER, {
     fetchPolicy: 'cache-and-network',
     variables: {"includeReviews": true},
   });
@@ -27,7 +27,7 @@ const MyReviews = () => {
     <FlatList
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => <ReviewItemForMyRepositories review={item} refetch={refetch} />}
       keyExtractor={({ id }) => id}
     />
   );

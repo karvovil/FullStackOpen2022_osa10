@@ -107,4 +107,9 @@ query getCurrentUser($includeReviews: Boolean = false) {
   }
 }
 `;
+export const DELETE_REVIEW = gql`
+mutation DeleteReview($deleteReviewId: ID!) {
+  deleteReview(id: $deleteReviewId)
+}
+`;
 
