@@ -81,12 +81,30 @@ export const GET_REVIEWS = gql`
   }
 }
 `;
+
 export const GET_CURRENT_USER = gql`
-  query {
-    me {
-      id
-      username
+query getCurrentUser($includeReviews: Boolean = false) {
+  me {
+    id
+    username
+    reviews @include(if: $includeReviews) {
+      edges {
+        node {
+          id
+          text
+          rating
+          createdAt
+          repositoryId
+          repository {
+            fullName
+          }
+          user {
+            username
+          }
+        }
+      }
     }
   }
+}
 `;
-// other queries...
+

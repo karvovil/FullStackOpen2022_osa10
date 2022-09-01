@@ -6,6 +6,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import SingleRepository from './SingleRepository';
 import Review from './Review';
+import MyReviews from './MyReviews';
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -22,6 +23,7 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
         <Route path="review" element={<Review />} exact />
+        <Route path="myReviews" element={<MyReviews />} exact />
         <Route path="signIn" element={<SignIn />} exact />
         <Route path="signUp" element={<SignUp />} exact />
         <Route path="/:id" element={<SingleRepository/>} exact/>

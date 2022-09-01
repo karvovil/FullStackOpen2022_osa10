@@ -42,7 +42,7 @@ const ReviewItem = ({ review }) => {
       </Text>
       <View style = {styles.verticalFlexContainer}>
         <Text fontSize = 'subheading' fontWeight="bold">
-          {review.user.username}
+          {review.repository.fullName ? review.repository.fullName : review.user.username}
         </Text>
         <Text style={{ paddingBottom: 7 }} color='textSecondary'>
           {humanReadableDate(review.createdAt)}

@@ -48,11 +48,21 @@ const ReviewLink = () => {
     </Link>
   );
 };
+const MyReviewsLink = () => {
+  return(
+    <Link to="/myReviews">
+      <Text fontSize='subheading' fontWeight='bold' style={styles.text}>
+        My Reviews
+      </Text>
+    </Link>
+  );
+};
 const AppBar = () => {
   const {data} = useQuery(GET_CURRENT_USER);
   const signedIn = data !== undefined && data.me;
 
   const showReviewLinkIfSignedIn = signedIn ? <ReviewLink/> : null;
+  const showMyReviewsLinkIfSignedIn = signedIn ? <MyReviewsLink/> : null;
   const signInOrOut = signedIn ? <SignOut/> : <SignInLink/>;
   const showSignUpLinkIfNotSignedIn = !signedIn ? <SignUpLink/> : null;
 
@@ -65,6 +75,7 @@ const AppBar = () => {
           </Text>
         </Link>
         {showReviewLinkIfSignedIn}
+        {showMyReviewsLinkIfSignedIn}
         {signInOrOut}
         {showSignUpLinkIfNotSignedIn}
       </ScrollView>
